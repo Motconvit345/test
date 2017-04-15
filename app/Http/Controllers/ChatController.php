@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Events\ChatPosted;
+use Auth;
+use App\Models\Message;
 
 class ChatController extends Controller
 {
@@ -33,9 +35,15 @@ class ChatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Message $message)
     {
-        event(new ChatPosted(Auth::user()));
+        $msg = Message::create([
+            'content' => $request->msgContent,
+            'room_id' => $request->roomId,
+            'user_id' => Auth::id()
+        ]);
+        
+        broadcast(new ChatPosted($msg, Auth::user()));
     }
 
     /**

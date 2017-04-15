@@ -59,7 +59,18 @@ Route::group(['prefix' => 'customer', 'middleware' => 'auth'], function () {
 });
 /*Chat System*/
 Route::resource('chat', 'ChatController');
+use App\Events\ChatPosted;
+use Auth as a;
+use App\Models\Message;
+Route::get('test', function() {
+    $msg = Message::create([
+            'content' => 'asdasd',
+            'room_id' => '2',
+            'user_id' => a::id()
+        ]);
 
+        broadcast(new ChatPosted(Auth::user(), $msg));
+});
 Route::get('{any?}', function () {
     return redirect('/');
 });

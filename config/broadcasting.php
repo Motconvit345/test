@@ -36,7 +36,7 @@ return [
             'secret' => env('PUSHER_APP_SECRET'),
             'app_id' => env('PUSHER_APP_ID'),
             'options' => [
-                //
+                'cluster' => 'ap1'
             ],
         ],
 
@@ -52,7 +52,6 @@ return [
         'null' => [
             'driver' => 'null',
         ],
-
     ],
 
 ];

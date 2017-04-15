@@ -12,7 +12,7 @@
         	<br>
             Mật khẩu mặc định của bạn là : {{ $defaultPass }}
             <br>
-        	<a href="{{ url('register/verify/' . $code) }}">Xác nhận</a>
+        	<a href="{{('http://localhost:8000/register/verify/' . $code) }}">Xác nhận</a>
         </div>
 
     </body>

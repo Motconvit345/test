@@ -1,11 +1,8 @@
 require('./bootstrap');
 import BillDetail from "./admin/billDetail.js"
+import chatAdmin from "./admin/chat.js"
 
 class App {
-    constructor(window) {
-        window.$ = window.jQuery = require('jquery');
-    }
-
     run() {
         this.setup();
         this.deleteResource();
@@ -13,8 +10,8 @@ class App {
         const billDetail = new BillDetail();
         billDetail.init();
 
-        const ChatHome = new chatHome();
-        ChatHome.init();
+        const ChatAdmin = new chatAdmin();
+        ChatAdmin.init();
     }
 
     deleteResource() {

@@ -157,11 +157,13 @@
 		                    </div>
 		                    @if (Auth::check())
 		                    	<div class="box-chat">
-		                    
+		                    		@foreach ($msg as $ms)
+		                    			{{-- expr --}}
+		                    		@endforeach
 		                    	</div>
 		                    	@else
 		                    	<div class="box-chat1" style="height: 220px;">
-		              				<h3><a href="">Bạn hãy đăng nhập chat với admin</a></h3>
+		              				<h3><a href="{{ action('Auth\LoginController@showLoginForm') }}">Bạn hãy đăng nhập chat với admin</a></h3>
 		                    	</div>
 		                    @endif
 		                    <div class="panel-footer clearfix">
@@ -172,7 +174,7 @@
 			                                <input type="hidden" class="room-id" value="1">
 			                                <input type="hidden" class="user-id" value="1">
 			                                    <div class="input-group-addon">
-			                                    <a href="#" id="message-send" data-url="{{ action('ChatController@store') }}">
+			                                    <a href="#" id="message-send" data-url="{{ action('ChatController@store') }}"" data-room="{{ Auth::id() }}">
 			                                        Send
 			                                    </a>
 			                                </div>

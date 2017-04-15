@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use DB;
 use App\Jobs\SendConfirmEmail;
 use Carbon\Carbon;
+use Mail;
+use App\Mail\ConfirmPass;
 
 class RegisterController extends Controller
 {
@@ -76,9 +78,8 @@ class RegisterController extends Controller
             'confirmed' => 0,
             'role_id' => 4,
         ]);
-         $job = (new SendConfirmEmail($request->email, $confirmation_code))
-                    ->delay(Carbon::now()->addSeconds(20));
-        dispatch($job);
+        Mail::to($request->email)->send(new ConfirmPass($confirmation_code));
+
         return redirect(route('login'))->with('status', 'Vui lòng xác nhận tài khoản email');
         /*return redirect()->action('Auth\RegisterController@notification', '58d95c18f252c');*/
     }

@@ -25,6 +25,23 @@ div#chat-home {
 	    	}
 		}
 	}
+	
+	#msg-off {
+		background: #0072BD;
+		@extend .fixedBox;
+		h3 {
+			a{
+				color: white;
+				font-size: 14px;
+				text-decoration: none;
+				i {
+					margin-right: 10px;
+				}
+			} 
+			margin: 5px 15px;
+			
+		}
+	}
 }
 
 .fixedBox {

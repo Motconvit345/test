@@ -63,80 +63,30 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */,
-/* 1 */
+/* 0 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_laravel_echo__);
 
 
 
-window.Pusher = __webpack_require__(4);
+window.Pusher = __webpack_require__(2);
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
     broadcaster: 'pusher',
-    key: 'your-pusher-key'
+    key: '1d31615fc36345b91743',
+    cluster: 'ap1'
 });
 
 /***/ }),
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var _class = function () {
-	function _class() {
-		_classCallCheck(this, _class);
-	}
-
-	_createClass(_class, [{
-		key: 'init',
-		value: function init() {
-			this.toggleChat();
-			this.sendMsg();
-		}
-	}, {
-		key: 'sendMsg',
-		value: function sendMsg() {
-			$('#message-send').click(function (event) {
-				var msgContent = $('.message-content').val();
-				$.post($('#message-send').data('url'), {
-					msgContent: msgContent
-				}, function (data) {});
-			});
-		}
-	}, {
-		key: 'toggleChat',
-		value: function toggleChat() {
-			$('#close-chat').click(function (event) {
-				$('#home-frame-chat').hide();
-				$('#msg-off h3').show();
-			});
-
-			$('#msg-off a').click(function (event) {
-				$(this).parent().hide();
-				$('#home-frame-chat').show();
-			});
-		}
-	}]);
-
-	return _class;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (_class);
-
-/***/ }),
-/* 3 */
+/* 1 */
 /***/ (function(module, exports) {
 
 var asyncGenerator = function () {
@@ -909,7 +859,7 @@ var Echo = function () {
 module.exports = Echo;
 
 /***/ }),
-/* 4 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -5044,18 +4994,18 @@ return /******/ (function(modules) { // webpackBootstrap
 ;
 
 /***/ }),
-/* 5 */,
-/* 6 */
+/* 3 */,
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__web_chat_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__web_chat_js__ = __webpack_require__(11);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-__webpack_require__(1);
+__webpack_require__(0);
 
 
 var App = function () {
@@ -5090,16 +5040,93 @@ var App = function () {
 })(window);
 
 /***/ }),
+/* 5 */,
+/* 6 */,
 /* 7 */,
 /* 8 */,
 /* 9 */,
 /* 10 */,
-/* 11 */,
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var _class = function () {
+	function _class() {
+		_classCallCheck(this, _class);
+	}
+
+	_createClass(_class, [{
+		key: 'init',
+		value: function init() {
+			this.toggleChat();
+			this.sendMsg();
+			this.listEvent();
+		}
+	}, {
+		key: 'sendMsg',
+		value: function sendMsg() {
+			$('#message-send').click(function (event) {
+				var msgContent = $('.message-content').val();
+				var roomId = $('#message-send').data('room');
+				$.post($('#message-send').data('url'), {
+					msgContent: msgContent,
+					roomId: roomId
+				}, function (data) {
+					$('.message-content').val('');
+				});
+			});
+		}
+	}, {
+		key: 'listEvent',
+		value: function listEvent() {
+			var html = '';
+			var boxChat = $('.box-chat');
+			Echo.join('chatroom.' + $('#message-send').data('room')).listen('ChatPosted', function (e) {
+				if ($('#message-send').data('room') == e.user.id) {
+					html = html + '<div class="guest">';
+				} else {
+					html = html + '<div class="guest">';
+				}
+
+				html = html + '<span class="message">' + e.msg.content + '</span>';
+				html = html + '<br>';
+				html = html + '<span class="author-message"><b>' + e.user.name + '</b></span>';
+				html = html + '</div>';
+				$('.box-chat').append(html);
+				boxChat[0].scrollTop = boxChat[0].scrollHeight;
+			});
+		}
+	}, {
+		key: 'toggleChat',
+		value: function toggleChat() {
+			$('#close-chat').click(function (event) {
+				$('#home-frame-chat').hide();
+				$('#msg-off h3').show();
+			});
+
+			$('#msg-off a').click(function (event) {
+				$(this).parent().hide();
+				$('#home-frame-chat').show();
+			});
+		}
+	}]);
+
+	return _class;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (_class);
+
+/***/ }),
 /* 12 */,
-/* 13 */
+/* 13 */,
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(6);
+module.exports = __webpack_require__(4);
 
 
 /***/ })

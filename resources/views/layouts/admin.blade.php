@@ -232,6 +232,49 @@
                 </div>
             </div>
         </div>
+        <div id="chat-home">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="home-frame-chat">
+                        <div class="panel panel-primary chat">
+                            <div class="panel-heading">
+                            <i class="fa fa-user" aria-hidden="true"></i> 
+                            Manager
+                            <span class="pull-right">
+                                <a href="#" id="close-chat"><i class="fa fa-times" aria-hidden="true"></i></a>
+                            </span>
+                            </div>
+                            <div class="box-chat">
+                            
+                            </div>
+                            <div class="panel-footer clearfix">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control message-content" placeholder="Type your message">
+                                        <input type="hidden" class="room-id" value="1">
+                                        <input type="hidden" class="user-id" value="1">
+                                            <div class="input-group-addon">
+                                            <a href="#" id="message-send" data-url="{{ action('ChatController@store') }}"" data-room="{{ Auth::id() }}">
+                                                Send
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="msg-off">
+                        <h3>
+                            <a href="#"><i class="fa fa-weixin" aria-hidden="true"></i> Click để chat</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
     <!-- /#wrapper -->
     <script src="{{ asset('js/app-admin.js') }}"></script>
     <!-- jQuery -->
@@ -252,7 +295,6 @@
     <!-- DataTables JavaScript -->
     <script src="{{ asset('bower_components/DataTables/media/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ asset('/js/chat.js') }}"></script>
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 </body>
 @stack('script')
