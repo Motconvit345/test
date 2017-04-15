@@ -77,7 +77,7 @@ class RegisterController extends Controller
             'role_id' => 4,
         ]);
          $job = (new SendConfirmEmail($request->email, $confirmation_code))
-                    ->delay(Carbon::now()->addSeconds(20));
+                    ->delay(Carbon::now()->addSeconds(3));
         dispatch($job);
         return redirect(route('login'))->with('status', 'Vui lòng xác nhận tài khoản email');
         /*return redirect()->action('Auth\RegisterController@notification', '58d95c18f252c');*/

@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -45,8 +48,7 @@ class LoginController extends Controller
             'confirmed' => 1
         ];
 
-
-        if (User::where('email', $request->email)->where('confirmed', 1)->count() < 1)
+        if (!User::where('email', $request->email)->where('confirmed', 1)->count())
         {
              return redirect()->back()
                     ->withInput()
@@ -59,7 +61,7 @@ class LoginController extends Controller
             return redirect()->back()
                     ->withInput()
                     ->withErrors([
-                        'email' => 'Tài khoản không đúng hoặc chưa được kích hoạt'
+                        'email' => 'Tài khoản không chính xác'
                     ]);
         }
         
