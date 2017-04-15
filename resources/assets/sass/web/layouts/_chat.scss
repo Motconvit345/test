@@ -1,0 +1,51 @@
+div#chat-home {
+	@extend .fixedBox;
+	width: 25%;
+	margin-right: 2%;
+	#home-frame-chat {
+		display: none;
+		.panel-heading {
+			span {
+				a{
+					color: white!important;
+				}
+			}
+		}
+		.box-chat {
+			padding: 5px;
+			height: 270px;
+	    	overflow-y: scroll;
+	    	.user {
+	    		padding: 10px 15px;
+	    	}
+	    	.guest {
+	    		padding: 10px 15px;
+			    background: #C7EAFC;
+			    color: #45829b;
+	    	}
+		}
+	}
+	
+	#msg-off {
+		background: #0072BD;
+		@extend .fixedBox;
+		h3 {
+			a{
+				color: white;
+				font-size: 14px;
+				text-decoration: none;
+				i {
+					margin-right: 10px;
+				}
+			} 
+			margin: 5px 15px;
+			
+		}
+	}
+}
+
+.fixedBox {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}

@@ -1,0 +1,34 @@
+div#chat-home {
+	@extend .fixedBox;
+	width: 25%;
+	margin-right: 2%;
+	#home-frame-chat {
+		display: none;
+		.panel-heading {
+			span {
+				a{
+					color: white!important;
+				}
+			}
+		}
+		.box-chat {
+			padding: 5px;
+			height: 270px;
+	    	overflow-y: scroll;
+	    	.user {
+	    		padding: 10px 15px;
+	    	}
+	    	.guest {
+	    		padding: 10px 15px;
+			    background: #C7EAFC;
+			    color: #45829b;
+	    	}
+		}
+	}
+}
+
+.fixedBox {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}
